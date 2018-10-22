@@ -30,8 +30,17 @@ window.addEventListener('DOMContentLoaded', () => {
     candidates.forEach(candidate => insertCandidate(table, candidate.name, candidate.skills));
   }
 
+  function hasSkill(candidate, skill) {
+    return candidate.skills.includes(skill);
+  }
   function filterCandidateBySkill(candidates, skill) {
-    return candidates.filter(candidate => candidate.skills.includes(skill));
+    const filteredCandidates = [];
+
+    candidates.forEach((candidate) => {
+      if (hasSkill(candidate, skill)) filteredCandidates.push(candidate);
+    });
+
+    return filteredCandidates;
   }
 
   const candidatesTable = document.getElementById("candidates_example");
@@ -40,7 +49,7 @@ window.addEventListener('DOMContentLoaded', () => {
   removeRowsFromTable(newCandidatesTable);
   const newTbody = newCandidatesTable.getElementsByTagName('tbody')[0];
 
-  const filteredCandidates = filterCandidateBySkill(newCandidates, 'JavaScript');
+  const filteredCandidates = filterCandidateBySkill(newCandidates, 'PHP');
   addCandidatesToTable(newTbody, filteredCandidates);
 
   document.body.appendChild(newCandidatesTable);
