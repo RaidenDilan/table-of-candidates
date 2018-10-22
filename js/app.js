@@ -1,4 +1,4 @@
-window.addEventListener('DomContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
   const newCandidates = [
     { name: "Kerrie", skills: ["JavaScript", "Docker", "Ruby"] },
     { name: "Mario", skills: ["Python", "AWS"] },
@@ -11,10 +11,7 @@ window.addEventListener('DomContentLoaded', () => {
 
   function removeRowsFromTable(table) {
     const rows = table.getElementsByTagName("tr");
-
-    while (rows.length > 1) {
-      table.deleteRow(1);
-    }
+    while (rows.length > 1) table.deleteRow(1);
   }
 
   function insertCandidate(tbody, name, skills) {
@@ -34,8 +31,7 @@ window.addEventListener('DomContentLoaded', () => {
   }
 
   function filterCandidateBySkill(candidates, skill) {
-    // INSERT YOUR LOGIC HERE   <-------------------------
-    return candidates;
+    return candidates.filter(candidate => candidate.skills.includes(skill));
   }
 
   const candidatesTable = document.getElementById("candidates_example");
