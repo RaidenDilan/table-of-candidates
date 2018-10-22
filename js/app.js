@@ -7,6 +7,9 @@ window.addEventListener('DOMContentLoaded', () => {
     { name: "Anna", skills: ["JavaScript", "AWS"] },
     { name: "Matt", skills: ["PHP", "AWS"] },
     { name: "Matt", skills: ["PHP", ".Net", "Docker"] },
+    { name: "Raiden", skills: ["JavaScript", "Node", "Angular", "Postgres", "Ruby on Rails"] },
+    { name: "Roman", skills: ["Vue", "JavaScript", "D3", "Node", "React"] },
+    { name: "Billie", skills: ["Django", "Postgres", "JavaScript", "Backbone"] }
   ];
 
   function removeRowsFromTable(table) {
@@ -33,6 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
   function hasSkill(candidate, skill) {
     return candidate.skills.includes(skill);
   }
+
   function filterCandidateBySkill(candidates, skill) {
     const filteredCandidates = [];
 
@@ -43,14 +47,41 @@ window.addEventListener('DOMContentLoaded', () => {
     return filteredCandidates;
   }
 
-  const candidatesTable = document.getElementById("candidates_example");
-  const newCandidatesTable = candidatesTable.cloneNode(true);
+  function existingTable() {
+    return document.getElementById('filteredResult');
+  }
 
-  removeRowsFromTable(newCandidatesTable);
-  const newTbody = newCandidatesTable.getElementsByTagName('tbody')[0];
+  function removeExistingTable() {
+    if (existingTable()) document.getElementById('filteredResult').remove();
+  }
 
-  const filteredCandidates = filterCandidateBySkill(newCandidates, 'PHP');
-  addCandidatesToTable(newTbody, filteredCandidates);
+  function cloneExistingTable() {
+    const candidatesTable = document.getElementById('candidates_list');
+    const newCandidatesTable = candidatesTable.cloneNode(true);
+    newCandidatesTable.id = 'filteredResult';
 
-  document.body.appendChild(newCandidatesTable);
+    return newCandidatesTable;
+  }
+
+  function generateFilteredTBody(candidates, skill, table) {
+    const newTbody = table.getElementsByTagName('tbody')[0];
+    const filteredCandidates = filterCandidateBySkill(newCandidates, skill);
+    addCandidatesToTable(newTbody, filteredCandidates);
+  }
+
+  function renderFilteredTable(candidates, skill) {
+    const newTable = cloneExistingTable();
+    removeRowsFromTable(newTable);
+    generateFilteredTBody(candidates, skill, newTable);
+    document.body.appendChild(newTable);
+  }
+
+  function changeResults() {
+    removeExistingTable();
+    const selectedSkill = skillsList.options[skillsList.selectedIndex].value;
+    renderFilteredTable(newCandidates, selectedSkill);
+  }
+
+  const skillsList = document.getElementById('technology');
+  skillsList.addEventListener('change', changeResults);
 });
