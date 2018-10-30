@@ -6,11 +6,15 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Table Of Candidates</title>
       <link rel="stylesheet" href="./css/style.css">
-      <script type="text/javascript" src="./js/app.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script type="text/javascript" src="./js/namespaced.js"></script>
+      <!-- <script type="text/javascript" src="./js/app.js"></script> -->
   </head>
   <body>
-    <div id="container">
-      <h2>Demo Table Of Candidates <h2>
+    <div class="container">
+
+      <h1><span class="blue">&lt;</span>Table<span class="blue">&gt;</span> <span class="yellow">of Candidates</pan></h1>
+
       <table class="candidates" id="candidates_list">
         <thead>
           <tr>
@@ -31,10 +35,21 @@
           <td>.NET, Azure</td>
         </tr>
       </table>
-      <h2>Filtered Candidates<h2>
-      <div id="results">
-        <h6>Start your search here:</h6>
-        <select id="technology">
+
+      <thead>
+        <tr>
+          <th><h2 class="filter">Filtered Candidates<h2></th>
+        </tr>
+      </thead>
+
+      <thead>
+        <tr>
+          <th>Start your search here:</th>
+        </tr>
+      </thead>
+
+      <span class="custom-dropdown custom-dropdown--emerald custom-dropdown--large">
+        <select class="custom-dropdown__select custom-dropdown__select--emerald" id="technology">
           <option selected disabled>Select Skill</option>
           <option value="JavaScript">JavaScript</option>
           <option value="Angular">Angular</option>
@@ -51,7 +66,11 @@
           <option value="React">React</option>
           <option value=".Net">.Net</option>
         </select>
-      </div>
+      </span>
+
     </div>
+    <tfoot>
+      <tr><h2 class="developer">Created with love by <a href="https://www.raidendilan.co.uk" target="_blank">Raiden Dilan</a></h2></tr>
+    </tfoot>
   </body>
 </html>

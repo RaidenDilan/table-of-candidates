@@ -1,25 +1,197 @@
+body {
+  font-family: 'Avenir Next', sans-serif;
+  font-weight: 300;
+  line-height: 1.42em;
+  color: #A7A1AE;
+  background-color: #1F2739;
+  /* display: table; */
+  width: 100vw;
+  height: 100vh;
+}
+h1 {
+  font-size: 3em;
+  font-weight: 300;
+  line-height: 1em;
+  text-align: center;
+  color: #4DC3FA;
+}
+h2 {
+  font-size: 1em;
+  font-weight: 300;
+  text-align: center;
+  display: block;
+  line-height: 1em;
+  padding-bottom: 2em;
+  color: #FB667A;
+}
+h2 a {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #4DC3FA;
+  text-decoration: none;
+}
+
+.blue {
+  color: #185875;
+}
+.yellow {
+  color: #FFF842;
+}
+select {
+  background-color: #FFF842;
+  padding: 2% 100%;
+  font-size: 0.9em;
+  font-weight: 900;
+  width: 100%;
+  margin: 0 auto;
+  height: 1.5em;
+  text-align: center;
+  display: block;
+  color: #323C50;
+  outline: none;
+}
 .candidates {
-  font-size: 12px;
-  background: #fff;
-  margin: 45px;
-  width: 480px;
+  width: 100%;
+  height: 100%;
   border-collapse: collapse;
+}
+.filter {
+  font-size: 2em;
+  font-weight: 300;
+  line-height: 1em;
+  text-align: center;
+  padding: 0;
+  color: #4DC3FA;
+}
+.developer {
+  padding: 0;
+}
+
+.container {
   text-align: left;
+  overflow: hidden;
+  width: 100vh;
+  margin: 0 auto;
+  display: table;
+  padding: 0 0 8em 0;
 }
-
-.candidates th {
-  font-size: 16px;
+.container th h1 {
+  font-weight: bold;
+  font-size: 1em;
+  text-align: left;
+  color: #185875;
+}
+.container td {
   font-weight: normal;
-  color: #039;
-  padding: 10px 8px;
-  border-bottom: 2px solid #6678b1;
+  font-size: 1em;
+  -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+	   -moz-box-shadow: 0 2px 2px -2px #0E1119;
+	        box-shadow: 0 2px 2px -2px #0E1119;
+}
+.container td, .container th {
+  padding-bottom: 1%;
+  padding-top: 1%;
+  padding-left: 1%;
+}
+.container tr:nth-child(odd) {
+  background-color: #323C50;
+}
+.container tr:nth-child(even) {
+  background-color: #2C3446;
+}
+.container th {
+  background-color: #1F2739;
+}
+.container td:first-child {
+  color: #FB667A;
+}
+.container tr:hover {
+  background-color: #464A52;
+  /* -webkit-box-shadow: 0 6px 6px -6px #0E1119;
+	-moz-box-shadow: 0 6px 6px -6px #0E1119;
+	        box-shadow: 0 6px 6px -6px #0E1119; */
+}
+.container td:hover {
+  background-color: #FFF842;
+  color: #403E10;
+  font-weight: bold;
+
+  /* box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -0px 0px, #7F7C21 0 0, #7F7C21 0px 0px; */
+  box-shadow:
+    #7F7C21 -1px 1px,
+    #7F7C21 -2px 2px,
+    #7F7C21 -3px 3px;
+    /* #7F7C21 -4px 4px,
+    #7F7C21 -5px 5px,
+    #7F7C21 -6px 6px; */
+  transform: translate3d(6px, -6px, 0);
+
+  transition-delay: 0s;
+  transition-duration: 0.4s;
+  transition-property: all;
+  transition-timing-function: line;
+}
+.custom-dropdown {
+  position: relative;
+  display: block;
+  margin-top: 1em;
+  vertical-align: middle;
+  width: 20%;
+  margin: 1em auto;
+}
+.custom-dropdown__select {
+  padding-right: 2.5em; /* accommodate with the pseudo elements for the dropdown arrow */
+  border: 0;
+  border-radius: 3px;
+  /* -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; */
+}
+.custom-dropdown::before, .custom-dropdown::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+}
+.custom-dropdown::after {
+  /*  Custom dropdown arrow */
+  content: '\25BC';
+  height: 1em;
+  font-size: 1em;
+  line-height: 1;
+  right: 0;
+  top: 50%;
+  margin-top: -.45em;
+  margin-right: 0.5em;
+}
+.custom-dropdown::before {
+  /*  Custom dropdown arrow cover */
+  width: 2em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 3px 3px 0;
+}
+.custom-dropdown__select--emerald {
+  background-color: #FFF842;
+  /* background-color: #20b390; */
+  color: #000;
+}
+.custom-dropdown--emerald::before {
+  background-color: #FFF842;
+  /* background-color: #1aa181; */
+}
+.custom-dropdown--emerald::after {
+  color: rgba(0, 0, 0, 1);
+}
+.custom-dropdown__select[disabled] {
+  color: rgba(0, 0, 0, 0.3);
+}
+.custom-dropdown.custom-dropdown--disabled::after {
+  color: rgba(0, 0, 0, 0.1);
 }
 
-.candidates td {
-  color: #669;
-  padding: 9px 8px 0px 8px;
-}
-
-.candidates tbody tr:hover td {
-  color: #009;
+@media (max-width: 800px) {
+  .container td:nth-child(4), .container th:nth-child(4) {
+    display: none;
+  }
 }
